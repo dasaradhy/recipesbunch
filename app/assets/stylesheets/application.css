@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+span#brand_rb {
+  font-size: 30px;
+  font-weight: bold;
+  background-color: orange;
+}
