@@ -20,19 +20,14 @@
           %a{href:"#"}
             Link            
       %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{href:"#"}
-            Link
         %li.dropdown
           %a.dropdown-toggle{'href'=>"#",'data-toggle'=>"dropdown",'role'=>"button",'aria-haspopup'=>"true",'aria-expanded'=>"false"}
-            Dropdown
+            / %span.glyphicon.glyphicon-user{"aria-hidden"=>"true"}
+            %i.fa.fa-user.fa-2x
           %ul.dropdown-menu
-            %li
-              %a{href:"#"}
-                Action
-            %li
-              %a{href:"#"}
-                Another Action
-            %li
-              %a{href:"#"}
-                Yet Another Action
+            - if user_signed_in?
+              %li
+                = link_to 'Logout',destroy_user_session_path, method: 'delete'
+            - else
+              %li
+                = link_to 'Login',new_user_session_path
