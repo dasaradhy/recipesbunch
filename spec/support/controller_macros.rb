@@ -5,3 +5,5 @@ module ControllerMacros
       user = FactoryGirl.create(:user)
       sign_in user
     }
+  end
+end
