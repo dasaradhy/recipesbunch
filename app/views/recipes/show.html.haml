@@ -1,0 +1,33 @@
+- model_class = Recipe
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:chef_id) + ':'
+  %br
+  = @recipe.chef_id
+%p
+  %strong= model_class.human_attribute_name(:ingredients) + ':'
+  %br
+  = @recipe.ingredients
+%p
+  %strong= model_class.human_attribute_name(:steps) + ':'
+  %br
+  = @recipe.steps
+%p
+  %strong= model_class.human_attribute_name(:preparation_time) + ':'
+  %br
+  = @recipe.preparation_time
+%p
+  %strong= model_class.human_attribute_name(:ease_of_preparation) + ':'
+  %br
+  = @recipe.ease_of_preparation
+%p
+  %strong= model_class.human_attribute_name(:taste) + ':'
+  %br
+  = @recipe.taste
+
+
+= link_to t('.back', :default => t("helpers.links.back")), recipes_path, :class => 'btn btn-default'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_recipe_path(@recipe), :class => 'btn btn-default'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), recipe_path(@recipe), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

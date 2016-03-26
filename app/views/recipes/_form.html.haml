@@ -1,0 +1,26 @@
+= simple_form_for @recipe, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :chef_id
+  / = f.error_span :chef_id
+  / = f.input :ingredients
+  / = f.error_span :ingredients
+  / = f.input :steps
+  / = f.error_span :steps
+  = f.input :preparation_time, collection: Recipe::TIMES
+  = f.error_span :preparation_time
+  / = f.input :ease_of_preparation
+  / = f.error_span :ease_of_preparation
+  / = f.input :taste
+  / = f.error_span :taste
+  / = f.input :ingredients, as: :string
+  = f.label :ingredients,{class: 'form-group standalone-label'}
+  %span#ingredients.form-group
+  %br
+  = f.label :steps,{class: 'form-group standalone-label'}
+  %span#steps.form-group
+  %br
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), recipes_path, :class => 'btn btn-default'
+
+:coffeescript
+  $ ->
+    new Ingredients('span#ingredients')
