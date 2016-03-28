@@ -2,7 +2,7 @@ class @Ingredients
 
   constructor: (selector) ->
     @ingredients_cnt=0
-    @add_ingredient=$('<input class="btn btn-default form-group" type="button" value="Add Ingredient"/>')
+    @add_ingredient=$('<input class="btn btn-default form-group" id="add-ingredient-button" type="button" value="Add Ingredient"/>')
     @add_ingredient.click =>
       ingredient = new Ingredients.Ingredient(@)
     $(selector).append(@add_ingredient)
