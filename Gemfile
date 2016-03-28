@@ -42,6 +42,9 @@ gem 'omniauth-google-oauth2'
 gem 'simple_form'
 gem 'annotate'
 gem 'font-awesome-rails'
+gem 'summernote-rails'
+gem 'bootstrap-sass'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'capybara'
@@ -49,6 +52,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'selenium-webdriver'
 end
 
 group :development do
