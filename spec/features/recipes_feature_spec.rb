@@ -18,7 +18,7 @@ RSpec.describe 'NewRecipe' do
       find(:css,'input#add-ingredient-button').click
       expect(page).to have_selector('input.ingredient_input',count:2)
 
-      expect(page).to have_selector('div.step_input',visible: false)
+      expect(page).to have_selector('textarea.step_input',visible: false)
       expect(page).to have_selector 'input#add-step-button'
       expect(page).to have_selector 'button.remove-step'
 
@@ -27,7 +27,7 @@ RSpec.describe 'NewRecipe' do
       page.driver.browser.switch_to.alert.accept
 
       find(:css,'input#add-step-button').click
-      expect(page).to have_selector('div.step_input',visible: false,count:2)
+      expect(page).to have_selector('textarea.step_input',visible: false,count:2)
     end
   end
 

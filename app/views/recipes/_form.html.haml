@@ -1,5 +1,4 @@
 = simple_form_for @recipe, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :chef_id
 
   = f.input :preparation_time, collection: Recipe::TIMES
   = f.error_span :preparation_time
