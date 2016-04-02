@@ -42,3 +42,8 @@ span#brand_rb {
   border-color: #eed3d7;
   color: #b94a48;
 }
+
+span.center-pill {
+  display: flex;
+  justify-content: center;
+}
