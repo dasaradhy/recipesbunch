@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  post 'images' => 'images#create'
+
+  get 'images/:id' => 'images#show'
+
   resources :recipes
 
   devise_for :users

@@ -44,8 +44,9 @@ gem 'annotate'
 gem 'font-awesome-rails'
 gem 'summernote-rails'
 gem 'bootstrap-sass'
-gem 'paperclip'
-gem 'aws-sdk'
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
