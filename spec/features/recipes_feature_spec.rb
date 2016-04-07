@@ -7,6 +7,7 @@ RSpec.describe 'NewRecipe' do
   describe "New Recipe", :js => true do
     it 'has expected behaviour' do
       visit '/recipes/new'
+      expect(page).to have_selector 'input#recipe_name'
       expect(page).to have_selector 'input.ingredient_input'
       expect(page).to have_selector 'input#add-ingredient-button'
       expect(page).to have_selector 'span.remove-ingredient'

@@ -41,5 +41,9 @@ RSpec.describe Recipe, type: :model do
     expect(build(:recipe,chef: nil)).not_to be_valid
   end
 
+  it 'is invalid without a name' do
+    expect(build(:recipe,name: nil)).not_to be_valid
+  end
+
 
 end

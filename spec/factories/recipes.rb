@@ -16,6 +16,7 @@
 FactoryGirl.define do
   factory :recipe do
     chef
+    name 'Yummy recipe!'
     ingredients {{"ingredients":["Oil","Cloves","Garlic","Bay Leaves","Salt to taste","Pepper to taste"]}}
     steps {{"steps":[{"description":"Heat oil","image":"one.png"},{"description":"Add Stuff","image":"two.png"},{"description":"Its done!","image":"three.png"}]}}
     preparation_time "15 minutes"
