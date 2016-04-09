@@ -18,11 +18,17 @@ class @Steps.Step
   on_image_upload: (files) =>
     @send_file files[0],(data) =>
       @step_input.summernote("insertImage",data.url)
+      $("img[src='"+data.url+"']").addClass('processed');
+      $('#new_recipe').append('<input type="hidden" name="recipe[images][]" value="'+data.url+'">');
+
 
   on_change: (content) =>
     image=@step_input.next().find('img:not(.processed)')
     if image.length > 0
-      image.addClass('processed')
+      $.get '/images', {image_url: escape(image.attr('src'))}, (data)->
+        image.attr('src',data.url);
+        $('#new_recipe').append('<input type="hidden" name="recipe[images][]" value="'+data.url+'">');
+        image.addClass('processed')
 
   send_file: ( file, callback ) =>
     data = new FormData()

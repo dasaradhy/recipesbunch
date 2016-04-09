@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   post 'images' => 'images#create'
-
   get 'images/:id' => 'images#show'
+  get 'images' => 'images#get_image'
 
   resources :recipes
 
