@@ -1,13 +1,17 @@
 class @Steps
 
-  constructor: (selector) ->
+  constructor: (selector,steps=[],message="") ->
     @steps_cnt=0
     @add_step=$('<input class="btn btn-default form-group" id="add-step-button" type="button" value="Add step"/>')
     @add_step.click =>
       step = new Steps.Step(@)
+    $(selector).append('<span class="help-block recipe-help-block">'+message+'</span>') if message!=""
     $(selector).append(@add_step)
-    step = new Steps.Step(@)
-
+    if steps.length <=0 
+      step = new Steps.Step(@,"")      
+    else
+      new Steps.Step(@,stp) for stp in steps
+      
   add_new_step: (step) ->
     @steps_cnt+=1
     step.insertBefore(@add_step)

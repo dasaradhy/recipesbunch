@@ -4,21 +4,24 @@
 #
 #  id                  :integer          not null, primary key
 #  chef_id             :integer
-#  ingredients         :json
+#  ingredients         :json             default([])
 #  steps               :json
 #  preparation_time    :string
 #  ease_of_preparation :float
 #  taste               :float
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  name                :string
+#  images              :json
 #
 
 FactoryGirl.define do
   factory :recipe do
     chef
     name 'Yummy recipe!'
-    ingredients {{"ingredients":["Oil","Cloves","Garlic","Bay Leaves","Salt to taste","Pepper to taste"]}}
-    steps {{"steps":[{"description":"Heat oil","image":"one.png"},{"description":"Add Stuff","image":"two.png"},{"description":"Its done!","image":"three.png"}]}}
+    ingredients ["Oil","Cloves","Garlic","Bay Leaves","Salt to taste","Pepper to taste"]
+    steps ["<p>This is the first step..</p><p><img class=\"processed\" src=\"/uploads/media/open-uri20160417-4283-1vu6weh.png\"><br></p>",
+      "<p>This is the next step..</p><p>This is what you should do</p><p>blah.. blah..</p><p>Great!</p><p><img class=\"processed\" src=\"/uploads/media/open-uri20160417-4283-1j0v2st.png\"><br></p>"]
     preparation_time "15 minutes"
     ease_of_preparation 2.5
     taste 2.5

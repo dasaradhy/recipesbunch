@@ -11,6 +11,10 @@ span#ingredients.form-group div.input-group, span#steps.form-group div.input-gro
   margin-bottom: 5px;
 }
 
+div.list-input-group {
+ margin-bottom: 5px; 
+}
+
 span.remove-ingredient:hover,span.remove-step:hover {
   background: #f1948a;
   cursor:pointer;
@@ -26,4 +30,8 @@ textarea.step_input {
 
 div.destroy-btn-group {
 float:right;
+}
+
+span.recipe-help-block {
+  margin-left: -15px;
 }

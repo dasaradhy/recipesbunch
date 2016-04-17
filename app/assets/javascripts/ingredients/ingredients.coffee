@@ -1,12 +1,16 @@
 class @Ingredients
 
-  constructor: (selector) ->
+  constructor: (selector,ingredients=[],message="") ->
     @ingredients_cnt=0
     @add_ingredient=$('<input class="btn btn-default form-group" id="add-ingredient-button" type="button" value="Add Ingredient"/>')
     @add_ingredient.click =>
       ingredient = new Ingredients.Ingredient(@)
+    $(selector).append('<span class="help-block recipe-help-block">'+message+'</span>') if message!=""
     $(selector).append(@add_ingredient)
-    ingredient = new Ingredients.Ingredient(@)
+    if ingredients.length<=0
+      ingredient = new Ingredients.Ingredient(@,"")
+    else
+      new Ingredients.Ingredient(@,ingrdnt) for ingrdnt in ingredients
 
   add_new_ingredient: (ingredient) ->
     @ingredients_cnt+=1

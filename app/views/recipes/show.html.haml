@@ -26,7 +26,10 @@
   %strong= model_class.human_attribute_name(:taste) + ':'
   %br
   = @recipe.taste
-
+%p
+  %strong= model_class.human_attribute_name(:images) + ':'
+  %br
+  = @recipe.images
 
 = link_to t('.back', :default => t("helpers.links.back")), recipes_path, :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_recipe_path(@recipe), :class => 'btn btn-default'

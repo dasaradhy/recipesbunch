@@ -1,13 +1,16 @@
 = simple_form_for @recipe, :html => { :class => 'form-horizontal' } do |f|
+  = f.error_notification
   = f.input :name
   = f.input :preparation_time, collection: Recipe::TIMES
-  = f.error_span :preparation_time
 
-  = f.label :ingredients,{class: 'form-group standalone-label'}
-  %span#ingredients.form-group
+  %span{:class=>("has-error" if @recipe.errors[:ingredients].present?)}
+    = f.label :ingredients,{class: 'form-group standalone-label control-label'}
+    %span#ingredients.form-group
+
   %br
-  = f.label :steps,{class: 'form-group standalone-label'}
-  %span#steps.form-group
+  %span{:class=>("has-error" if @recipe.errors[:steps].present?)}
+    = f.label :steps,{class: 'form-group standalone-label control-label'}
+    %span#steps.form-group
   %br
 
   = f.button :submit, :class => 'btn-primary'
@@ -15,5 +18,5 @@
 
 :coffeescript
   $ ->
-    new Ingredients('span#ingredients')
-    new Steps('span#steps')
+    new Ingredients('span#ingredients',#{@recipe.ingredients},#{@recipe.errors[:ingredients]})
+    new Steps('span#steps',#{@recipe.steps},#{@recipe.errors[:steps]})

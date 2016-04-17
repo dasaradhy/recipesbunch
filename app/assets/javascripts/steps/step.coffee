@@ -1,7 +1,7 @@
 class @Steps.Step
-  constructor: (@steps) ->
+  constructor: (@steps,value="") ->
 
-    @step_input=$('<textarea class="form-control step_input step-text-area" name="recipe[steps][]"/>')
+    @step_input=$('<textarea class="form-control step_input step-text-area" name="recipe[steps][]">'+value+'</textarea>')
     @steps.add_new_step(@step_input)
     @step_input.summernote({focus: true, callbacks: {onInit: @destroy_button, onImageUpload: @on_image_upload, onChange: @on_change} })
 
@@ -25,10 +25,14 @@ class @Steps.Step
   on_change: (content) =>
     image=@step_input.next().find('img:not(.processed)')
     if image.length > 0
-      $.get '/images', {image_url: escape(image.attr('src'))}, (data)->
-        image.attr('src',data.url);
-        $('#new_recipe').append('<input type="hidden" name="recipe[images][]" value="'+data.url+'">');
-        image.addClass('processed')
+      $.get '/images', {image_url: escape(image.attr('src'))}, (data)=>
+        #image.attr('src',data.url);
+        image.replaceWith('<img class="processed" src="'+data.url+'"/>');
+        $('#new_recipe').append('<input type="hidden" name="recipe[images][]" value="'+data.url+'"/>');
+        # @step_input.summernote('insertNode',$('<br/>'));
+        @step_input.summernote('editor.insertText','');
+        # #image.addClass('processed')
+        #@step_input.summernote("focus")
 
   send_file: ( file, callback ) =>
     data = new FormData()
