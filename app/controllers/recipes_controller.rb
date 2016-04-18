@@ -71,6 +71,7 @@ class RecipesController < ApplicationController
         uploader.remove!
       }      
     end
+    recipe[:steps].each{|step|step.gsub!(/(<p>(<br>)*<\/p>|<br\/?>)*\z/,'')}
 
     if @recipe.update(recipe_params)
       render 'show'

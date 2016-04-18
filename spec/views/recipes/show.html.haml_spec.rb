@@ -7,7 +7,11 @@ RSpec.describe "recipes/show.html.haml", type: :view do
 
   it "shows 3 ingredients" do
     render
-    expect(rendered).to have_selector('.ingredient',count:3)
+    expect(rendered).to have_selector('.ingredient',count:6)
+  end
+
+  it 'shows 2 steps' do
+    
   end
 
 end

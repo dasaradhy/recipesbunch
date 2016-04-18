@@ -47,5 +47,13 @@ RSpec.describe Recipe, type: :model do
     expect(build(:recipe,name: nil)).not_to be_valid
   end
 
+  it 'is invalid with only whitespace characters' do
+    expect(build(:recipe,steps:["     \n     "])).not_to be_valid
+  end
+
+  it 'is invalid with only <p> and <br> elements' do
+    expect(build(:recipe,steps:["<p><br/></p>"])).not_to be_valid
+  end
+
 
 end

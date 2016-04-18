@@ -34,7 +34,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def steps_are_present
-    errors.add(:steps,'Steps should not be empty') unless (steps.present? && steps.any?{|step|step.present?})
+    errors.add(:steps,'Steps should not be empty') unless (steps.present? && steps.any?{|step|step.gsub(/<\/?(p|br)\/?>/,'').present?})
   end
 
 end

@@ -14,11 +14,15 @@
  *= require_self
  */
 
-span#brand_rb {
-  font-size: 30px;
-  font-weight: bold;
-  background-color: orange;
+div#brand_rb {
+  height: 100%;
 }
+
+div#brand_rb img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 
 .flash_notice, .flash_alert {
   padding: 8px 35px 8px 14px;

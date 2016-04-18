@@ -35,3 +35,24 @@ float:right;
 span.recipe-help-block {
   margin-left: -15px;
 }
+
+span.ingredient, div.step {
+  margin-left: 10px;
+}
+
+span.ingredient {
+  display: block;
+  margin-top: 10px;
+}
+
+div.line_number {
+  float:left
+}
+
+div.step {
+  img {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+  }
+}
