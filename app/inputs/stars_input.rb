@@ -19,7 +19,7 @@ class StarsInput < SimpleForm::Inputs::Base
         }
         star_html="<i class='fa fa-lg "+fa_class+"' ";
         if(!readonly){
-          star_html+="onmouseover='set_stars($(this).parent(&quot;div.recipe-label&quot;),"+position+")'></i>";
+          star_html+="onmouseover='set_stars($(this).parent(&quot;div.recipe-label&quot;),"+position+","+readonly+")'></i>";
         }
         else{
           star_html+="></i>";
@@ -33,6 +33,7 @@ class StarsInput < SimpleForm::Inputs::Base
           html+=get_star(pos,value,readonly)
         }
         starholder.html(html);
+        starholder.next('input').val(value)
       }
     </script>
     eos
@@ -42,6 +43,6 @@ class StarsInput < SimpleForm::Inputs::Base
     </script>
     eos
 
-    "#{prejscript}<span>#{stars_html}</span> #{@builder.hidden_field(attribute_name, merged_input_options)} #{postjscript}".html_safe
+    "#{prejscript} #{stars_html} #{@builder.hidden_field(attribute_name, merged_input_options)} #{postjscript}".html_safe
   end
 end
