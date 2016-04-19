@@ -1,7 +1,16 @@
 - model_class = Recipe
 %h1=t '.title', :default => @recipe.name #:default => model_class.model_name.human.titleize
-
+="Recipe by #{@recipe.chef.user.email}"
+%br
+%br
 %div
+  
+  .well
+    = simple_form_for @recipe do |f|
+      / %h4= "taste"
+      = f.input :taste, as: :stars, read_only: true
+      = f.input :difficulty, as: :stars, read_only: true
+
   %h3= model_class.human_attribute_name(:ingredients)
 
   - @recipe.ingredients.each_with_index do |ingredient,index|

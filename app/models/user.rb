@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :chef
+
+  def name
+    "#{firstname} #{lastname}"
+  end
 end
