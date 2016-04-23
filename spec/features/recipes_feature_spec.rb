@@ -1,11 +1,15 @@
+require 'rails_helper'
 
-RSpec.describe 'NewRecipe' do
-  before :each do
-    login_as(create(:user),scope: :user)
+RSpec.feature 'Recipe' do
+
+  scenario "New Recipe without login" do
+    visit 'recipes/new'
+    expect(current_path).to eq new_user_session_path
   end
-  
-  describe "New Recipe", :js => true do
-    it 'has expected behaviour' do
+
+  scenario "New Recipe with login", :js => true do
+
+      login_as(create(:user),scope: :user)
       visit '/recipes/new'
       expect(page).to have_selector 'input#recipe_name'
       expect(page).to have_selector 'input.ingredient_input'
@@ -29,7 +33,24 @@ RSpec.describe 'NewRecipe' do
 
       find(:css,'input#add-step-button').click
       expect(page).to have_selector('textarea.step_input',visible: false,count:2)
-    end
+
   end
+
+  scenario "Show Recipe", :js => true  do
+    login_as(create(:user),scope: :user)
+    visit '/recipes/new'
+
+    fill_in "Name", with: "Test Recipe"
+    select "15 minutes", from: "Preparation time"
+    find(:css,'input.ingredient_input').set 'Ingredient 1'
+    find(:css,'#add-ingredient-button').click
+    find(:css,'div.panel-body[contenteditable]').set 'Step1'
+    find(:css,'input#add-step-button').click
+    find(:xpath,'//input[@type=\'submit\']').click
+
+    expect(page).to have_text('Test Recipe')
+    
+  end
+
 
 end 

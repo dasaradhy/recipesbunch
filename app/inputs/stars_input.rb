@@ -1,7 +1,7 @@
 class StarsInput < SimpleForm::Inputs::Base
   def input((wrapper_options))
     merged_input_options = merge_wrapper_options(input_html_options, wrapper_options)
-    stars_html="<div id='star_#{attribute_name}' class='recipe-label'>"
+    stars_html="<div id='star_#{attribute_name}' class='recipe-label' style='margin-left: 15px;display: inline-block;'>"
     val=object.send(attribute_name.to_sym)||0
     stars_html+="</div>"
     prejscript= <<-eos
@@ -17,7 +17,7 @@ class StarsInput < SimpleForm::Inputs::Base
         else {
          fa_class="fa-star-o" 
         }
-        star_html="<i class='fa fa-lg "+fa_class+"' ";
+        star_html="<i class='fa fa-lg "+fa_class+"' style='color: orange;margin-left: 3px;' ";
         if(!readonly){
           star_html+="onmouseover='set_stars($(this).parent(&quot;div.recipe-label&quot;),"+position+","+readonly+")'></i>";
         }
@@ -40,6 +40,7 @@ class StarsInput < SimpleForm::Inputs::Base
     postjscript= <<-eos
     <script>
       set_stars($('div#star_#{attribute_name}'),#{val},#{options[:read_only]||false});
+      $('div#star_#{attribute_name}').parent().css('margin-bottom','0px');
     </script>
     eos
 

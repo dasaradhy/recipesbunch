@@ -11,7 +11,8 @@ RSpec.describe "recipes/show.html.haml", type: :view do
   end
 
   it 'shows 2 steps' do
-    
+    render
+    expect(rendered).to have_selector('.step',count:2)
   end
 
 end

@@ -2,17 +2,17 @@
 #
 # Table name: recipes
 #
-#  id               :integer          not null, primary key
-#  chef_id          :integer
-#  ingredients      :json             default([])
-#  steps            :json             default([])
-#  preparation_time :string
-#  difficulty       :float
-#  taste            :float
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  name             :string
-#  images           :json             default([])
+#  id                  :integer          not null, primary key
+#  chef_id             :integer
+#  ingredients         :json             default([])
+#  steps               :json             default([])
+#  preparation_time    :string
+#  ease_of_preparation :float
+#  taste               :float
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  name                :string
+#  images              :json             default([])
 #
 
 class RecipesController < ApplicationController
@@ -48,7 +48,7 @@ class RecipesController < ApplicationController
     @recipe=Recipe.new(recipe_params)
     @recipe.chef=Chef.where(user_id: current_user.id).first_or_create();
     if @recipe.save
-      render 'show'
+      redirect_to recipe_path(@recipe)
     else
       render 'new'
     end

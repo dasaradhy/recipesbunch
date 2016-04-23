@@ -2,22 +2,29 @@
 #
 # Table name: recipes
 #
-#  id               :integer          not null, primary key
-#  chef_id          :integer
-#  ingredients      :json             default([])
-#  steps            :json             default([])
-#  preparation_time :string
-#  difficulty       :float
-#  taste            :float
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  name             :string
-#  images           :json             default([])
+#  id                  :integer          not null, primary key
+#  chef_id             :integer
+#  ingredients         :json             default([])
+#  steps               :json             default([])
+#  preparation_time    :string
+#  ease_of_preparation :float
+#  taste               :float
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  name                :string
+#  images              :json             default([])
 #
 
 require 'rails_helper'
 
 RSpec.describe RecipesController, type: :controller do
+
+  let(:recipe){build_stubbed(:recipe)}
+  let(:user){create(:user)}
+
+  before do
+    allow(Recipe).to receive_messages(find: recipe)
+  end
 
   describe "GET #index" do
     it "returns http success" do
@@ -32,7 +39,7 @@ RSpec.describe RecipesController, type: :controller do
       assert_redirected_to new_user_session_path
     end
     it "returns http success" do
-      sign_in create(:user)
+      sign_in user
       get :new
       expect(response).to have_http_status(:success)
     end
@@ -40,20 +47,21 @@ RSpec.describe RecipesController, type: :controller do
 
   describe "GET #edit" do
     it "returns http not authorized without login" do
-      get :edit, id: create(:recipe)
+      get :edit, id: recipe.id
       assert_redirected_to new_user_session_path
     end
-    it "returns http success" do
-      sign_in create(:user)
-      get :edit, id: create(:recipe)
-      expect(response).to have_http_status(:success)
+    it "should render 'edit' template" do
+      sign_in user
+      get :edit, id: recipe.id
+      expect(response).to render_template('edit')
     end
   end
 
   describe "GET #show" do
-    it "returns http success" do
-      get :show, id: create(:recipe)
-      expect(response).to have_http_status(:success)
+    it "should render 'show' template" do
+      get :show, id: recipe.id
+      expect(assigns(:recipe)).to eq recipe
+      expect(response).to render_template('show')
     end
   end
 
