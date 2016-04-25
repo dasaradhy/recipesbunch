@@ -86,9 +86,7 @@ private
 
   def prune_images(images)
     images.each{|image|
-      uploader=MediaUploader.new;
-      uploader.retrieve_from_store!(File.basename(image);
-      uploader.remove!
+      MediaManager.remove_image(image)
     }
   end
 

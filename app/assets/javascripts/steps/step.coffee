@@ -26,13 +26,9 @@ class @Steps.Step
     image=@step_input.next().find('img:not(.processed)')
     if image.length > 0
       $.get '/images', {image_url: escape(image.attr('src'))}, (data)=>
-        #image.attr('src',data.url);
         image.replaceWith('<img class="processed" src="'+data.url+'"/>');
         $("form[form_for='recipe']").append('<input type="hidden" name="recipe[images][]" value="'+data.url+'"/>');
-        # @step_input.summernote('insertNode',$('<br/>'));
         @step_input.summernote('editor.insertText','');
-        # #image.addClass('processed')
-        #@step_input.summernote("focus")
 
   send_file: ( file, callback ) =>
     data = new FormData()

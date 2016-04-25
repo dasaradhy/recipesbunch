@@ -5,11 +5,11 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def new?
-    @user.present?
+    user.present?
   end
 
   def edit?
-    @user.chef.present? && record.chef == @user.chef
+    user.present? && ( record.chef == user.chef )
   end
 
   def show?
@@ -21,7 +21,7 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def update?
-    @user.chef.present? && record.chef == @user.chef
+    edit?
   end
 
 end

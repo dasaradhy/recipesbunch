@@ -32,5 +32,9 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password "test1234"
     password_confirmation "test1234"
+    after(:create) do |user|
+      user.chef=Chef.new
+      user.chef.user=user
+    end
   end
 end

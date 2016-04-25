@@ -25,5 +25,6 @@ FactoryGirl.define do
     preparation_time "15 minutes"
     ease_of_preparation 3.5
     taste 2.5
+    images []
   end
 end

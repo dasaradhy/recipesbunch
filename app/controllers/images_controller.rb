@@ -1,25 +1,15 @@
-require 'open-uri'
 class ImagesController < ApplicationController
+
   def create
     authorize :image
-    uploader=MediaUploader.new;
-    uploader.store!(params[:file].tempfile)
-
-    render json: {url: uploader.url}
-  end
-
-  def show
+    image_url=MediaManager.store_file(params[:file].tempfile)
+    render json: {url: image_url}
   end
 
   def get_image
     authorize :image
-    image_url=params[:image_url]
-    uploader=MediaUploader.new;
-    unescaped_image_url=URI.unescape(image_url)
-    uploader.store! open(unescaped_image_url)
-
-    render json: {url: uploader.url} 
-
+    image_url=MediaManager.store_remote(params[:image_url])
+    render json: {url: image_url} 
   end
 
 end
