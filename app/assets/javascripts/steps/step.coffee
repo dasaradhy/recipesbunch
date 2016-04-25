@@ -19,7 +19,7 @@ class @Steps.Step
     @send_file files[0],(data) =>
       @step_input.summernote("insertImage",data.url)
       $("img[src='"+data.url+"']").addClass('processed');
-      $('#new_recipe').append('<input type="hidden" name="recipe[images][]" value="'+data.url+'">');
+      $("form[form_for='recipe']").append('<input type="hidden" name="recipe[images][]" value="'+data.url+'">');
 
 
   on_change: (content) =>
@@ -28,7 +28,7 @@ class @Steps.Step
       $.get '/images', {image_url: escape(image.attr('src'))}, (data)=>
         #image.attr('src',data.url);
         image.replaceWith('<img class="processed" src="'+data.url+'"/>');
-        $('#new_recipe').append('<input type="hidden" name="recipe[images][]" value="'+data.url+'"/>');
+        $("form[form_for='recipe']").append('<input type="hidden" name="recipe[images][]" value="'+data.url+'"/>');
         # @step_input.summernote('insertNode',$('<br/>'));
         @step_input.summernote('editor.insertText','');
         # #image.addClass('processed')

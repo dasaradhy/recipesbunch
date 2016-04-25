@@ -1,4 +1,4 @@
-= simple_form_for @recipe, :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for @recipe, :html => { :class => 'form-horizontal', :form_for => 'recipe' } do |f|
   = f.error_notification
   = f.input :name
   = f.input :preparation_time, collection: Recipe::TIMES
