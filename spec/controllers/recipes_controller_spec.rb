@@ -73,10 +73,12 @@ RSpec.describe RecipesController, type: :controller do
     it "should raise exception when recipe does not belong to user" do
       allow(recipe).to receive_messages(chef: Chef.first)
       sign_in user
-      expect {
+      # expect {
       get :edit, id: recipe.id
-      expect(response).to render_template('edit')
-      }.to raise_error(Pundit::NotAuthorizedError)
+      # expect(response).to render_template('edit')
+      # }.to raise_error(Pundit::NotAuthorizedError)
+      assert_redirected_to root_path
+      expect(flash[:alert]).to eq 'Operation not permitted.'
     end
 
     it "should render 'edit' template" do

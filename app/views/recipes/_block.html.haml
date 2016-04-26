@@ -1,0 +1,7 @@
+- if recipe.present?
+  .recipe-block{onclick: "window.location='#{recipe_path(recipe)}'"}
+    - if recipe.images.first
+      %img{src: recipe.images.first,alt: recipe.name,class: 'recipe-block-image'} 
+    %h4.recipe-block-title= recipe.name
+- else
+  .recipe-block.no-recipe

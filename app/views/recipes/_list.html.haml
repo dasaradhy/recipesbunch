@@ -1,0 +1,4 @@
+
+.recipe-list
+  - recipes = (0...30).collect{|x|recipes[x]}
+  = render partial: 'recipes/block', collection: recipes, as: :recipe

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411102810) do
+ActiveRecord::Schema.define(version: 20160426115418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20160411102810) do
     t.json     "ingredients",         default: []
     t.json     "steps",               default: []
     t.string   "preparation_time"
-    t.float    "ease_of_preparation"
-    t.float    "taste"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.float    "ease_of_preparation", default: 0.0
+    t.float    "taste",               default: 0.0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "name"
     t.json     "images",              default: []
   end

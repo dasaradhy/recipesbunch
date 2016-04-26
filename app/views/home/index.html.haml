@@ -1,2 +1,17 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+= simple_form_for :recipe, html: {class: 'form-online'} do |f|
+  .input-group#search-group
+    %span.input-group-addon= 'Find Recipe'
+    = f.input :search, placeholder: 'Search Recipes', label: false, html: {} 
+    %span.input-group-btn 
+      %button.btn.btn-default{type: 'submit'}
+        %i.fa.fa-search
+
+
+#search_results
+
+%h4.recipes-bar= 'Recent Recipes'
+= render partial: 'recipes/list', locals: {recipes: @recent_recipes}
+%h4.recipes-bar= 'Tastiest Recipes'
+= render partial: 'recipes/list', locals: {recipes: @tastiest_recipes}
+%h4.recipes-bar= 'Easiest Recipes'
+= render partial: 'recipes/list', locals: {recipes: @easiest_recipes}

@@ -14,7 +14,8 @@
   %br
 
   = f.button :submit, :class => 'btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), recipes_path, :class => 'btn btn-default'
+  - redirect_path = @recipe.new_record? ? root_path : recipe_path(@recipe)
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), redirect_path, :class => 'btn btn-default'
 
 :coffeescript
   $ ->

@@ -57,3 +57,48 @@ div.step {
   }
 }
 
+.recipe-list {
+  background-color: #EEE;
+  overflow: auto;
+  height: 160px;
+  white-space:nowrap;
+}
+
+.recipe-block {
+  height: 160px;
+  width: 240px;
+  margin-left: 12px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.recipes-bar {
+  margin-top: 30px;
+}
+
+.no-recipe {
+  background: #AAA;
+}
+
+img.recipe-block-image {
+  width: 240px;
+  height: 160px;
+  position: absolute;
+  z-index: 1000;
+}
+
+h4.recipe-block-title {
+  position: absolute;
+  z-index: 1001;
+  background: black;
+  opacity: 0.5;
+  color: white; 
+  white-space: pre-wrap;
+  text-align: center;
+  bottom: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%
+
+}
