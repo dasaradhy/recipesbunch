@@ -1,31 +1,36 @@
 - model_class = Recipe
-%h1=t '.title', :default => @recipe.name #:default => model_class.model_name.human.titleize
-="Recipe by #{@recipe.chef.user.email}"
-%br
-%br
-%div
-  
-  .well
-    = simple_form_for @recipe do |f|
-      / %h4= "taste"
-      = f.input :taste, as: :stars, read_only: true
-      = f.input :ease_of_preparation, as: :stars, read_only: true
+#recipe_head
+    
+  #recipe_head_title
+    %h1=t '.title', :default => @recipe.name #:default => model_class.model_name.human.titleize
+    ="Recipe by #{@recipe.chef.user.email}"
 
-  %h3= model_class.human_attribute_name(:ingredients)
+  #recipe_head_body    
+    .well
+      = simple_form_for @recipe do |f|
+        / %h4= "taste"
+        = f.input :taste, as: :stars, read_only: true
+        = f.input :ease_of_preparation, as: :stars, read_only: true
 
-  - @recipe.ingredients.each_with_index do |ingredient,index|
-    %span.ingredient
-      = "#{index+1}. #{ingredient}"
-      %br
+  - if @recipe.images.present?
+    %img{src: @recipe.images.last,alt: @recipe.name,class: 'recipe-head-block-image'}
 
-  %h3= model_class.human_attribute_name(:steps)
 
-  - @recipe.steps.each_with_index do |step,index|
-    .step
-      %div.line_number= "#{index+1}."
-      %div
-        / = simple_format(step)
-        =raw(step)
+%h3= model_class.human_attribute_name(:ingredients)
+
+- @recipe.ingredients.each_with_index do |ingredient,index|
+  %span.ingredient
+    = "#{index+1}. #{ingredient}"
+    %br
+
+%h3= model_class.human_attribute_name(:steps)
+
+- @recipe.steps.each_with_index do |step,index|
+  .step
+    %div.line_number= "#{index+1}."
+    %div
+      / = simple_format(step)
+      =raw(step)
   / %p
   /   %strong= model_class.human_attribute_name(:chef_id) + ':'
   /   %br

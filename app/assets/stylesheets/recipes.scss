@@ -102,3 +102,21 @@ h4.recipe-block-title {
   width: 100%
 
 }
+
+img.recipe-head-block-image {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+    z-index:-1;
+}    
+
+div.recipe_head {
+  display: block;
+  overflow: auto;
+  position: relative;
+}
+
+#recipe_head_title,#recipe_head_body {
+  z-index: 1000;
+  position: absolute;
+}
