@@ -42,6 +42,7 @@ RSpec.feature 'Recipe' do
 
     fill_in "Name", with: "Test Recipe"
     select "15 minutes", from: "Preparation time"
+    find(:css,'textarea#recipe_description').set 'This is a test description.'
     find(:css,'input.ingredient_input').set 'Ingredient 1'
     find(:css,'#add-ingredient-button').click
     find(:css,'div.panel-body[contenteditable]').set 'Step1'

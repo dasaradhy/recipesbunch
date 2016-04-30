@@ -18,7 +18,7 @@
 class Recipe < ActiveRecord::Base
   TIMES = ['5 minutes','10 minutes','15 minutes','20 minutes','30 minutes','45 minutes','1 hour','1:15 hours','1:30 hours','2:00 hours']
   belongs_to :chef
-  validates_presence_of :name,:chef,:ingredients,:steps,:preparation_time
+  validates_presence_of :name,:chef,:ingredients,:steps,:preparation_time,:description
   validate :preparation_time_is_valid
   validate :ingredients_are_present
   validate :steps_are_present

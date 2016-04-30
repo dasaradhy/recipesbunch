@@ -1,7 +1,11 @@
-- if recipe.present?
-  .recipe-block{onclick: "window.location='#{recipe_path(recipe)}'"}
-    - if recipe.images.first
-      %img{src: recipe.images.first,alt: recipe.name,class: 'recipe-block-image'} 
-    %h4.recipe-block-title= recipe.name
-- else
-  .recipe-block.no-recipe
+.recipe-block-container
+  - if recipe.present?
+    .recipe-block{onclick: "window.location='#{recipe_path(recipe)}'"}
+      .recipe-title-container
+        %h4.recipe-block-title= recipe.name
+      .recipe-block-img-container
+        - recipe_image = recipe.try(:images).try(:first) || 'placeholder.png'
+        %img{src: recipe_image,alt: recipe.name,class: 'recipe-block-image'} 
+  - else
+    .recipe-block.no-recipe
+      &nbsp;

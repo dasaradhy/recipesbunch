@@ -55,5 +55,8 @@ RSpec.describe Recipe, type: :model do
     expect(build(:recipe,steps:["<p><br/></p>"])).not_to be_valid
   end
 
+  it 'is invalid without a description' do
+    expect(build(:recipe,description: nil)).not_to be_valid
+  end
 
 end

@@ -26,5 +26,6 @@ FactoryGirl.define do
     ease_of_preparation 3.5
     taste 2.5
     images []
+    description 'This is a test recipe. This is there for testing..'
   end
 end

@@ -58,48 +58,52 @@ div.step {
 }
 
 .recipe-list {
-  background-color: #EEE;
   overflow: auto;
-  height: 160px;
   white-space:nowrap;
 }
 
-.recipe-block {
-  height: 160px;
-  width: 240px;
+.recipe-block-container {
+  width: 320px;
+  display: inline-block;  
+  background: #FFFACD;
   margin-left: 12px;
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
+  box-shadow: 3px 3px 3px #F0E68C;
 }
 
-.recipes-bar {
-  margin-top: 30px;
+.recipe-block {
+  width: 300px;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
 .no-recipe {
   background: #AAA;
 }
 
+div.recipe-block-img-container {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
 img.recipe-block-image {
-  width: 240px;
-  height: 160px;
+  max-height: 200px;
+  width: auto !important;
   position: absolute;
-  z-index: 1000;
+  transform: translate(-50%,0);
+  margin-left: 50%;
+}
+
+
+.recipe-title-container {
+  height: 40px;
 }
 
 h4.recipe-block-title {
-  position: absolute;
-  z-index: 1001;
-  background-color:rgba(0,0,0,0.5);
-  color: white; 
   white-space: pre-wrap;
+  width: 100%;
+  position: relative;
   text-align: center;
-  bottom: 0px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%
-
 }
 
 img.recipe-head-block-image {

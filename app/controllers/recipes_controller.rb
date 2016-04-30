@@ -65,12 +65,11 @@ class RecipesController < ApplicationController
 private
 
   def recipe_params
-    params.require(:recipe).permit(:name,:preparation_time,:ingredients => [],:steps => [],:images => [])
+    params.require(:recipe).permit(:name,:preparation_time,:description,:ingredients => [],:steps => [],:images => [])
   end
 
   def filter_images(recipe=Recipe.new)
-    param_images = params.dig(:recipe,:images)
-    params[:recipe][:images] = param_images = [] unless param_images.present?
+    param_images = params.dig(:recipe,:images)||[]
 
     param_images = (param_images+recipe.images).uniq
     images_to_delete=param_images.select{|image|
@@ -78,9 +77,9 @@ private
         step !~ /"#{image}"/
       }
     }
-
     prune_images(images_to_delete);
     param_images -= images_to_delete
+    params[:recipe][:images] = param_images    
   end
 
 
