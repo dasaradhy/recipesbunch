@@ -17,7 +17,7 @@ class StarsInput < SimpleForm::Inputs::Base
         else {
          fa_class="fa-star-o" 
         }
-        star_html="<i class='fa fa-lg "+fa_class+"' style='color: orange;margin-left: 3px;' ";
+        star_html="<i class='fa fa-lg "+fa_class+"' style='color: orange;margin-left: 3px;text-shadow: 1px 1px 2px red;' ";
         if(!readonly){
           star_html+="onmouseover='set_stars($(this).parent(&quot;div.recipe-label&quot;),"+position+","+readonly+")'></i>";
         }
