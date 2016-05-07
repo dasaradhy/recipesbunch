@@ -57,53 +57,8 @@ div.step {
   }
 }
 
-.recipe-list {
-  overflow: auto;
-  white-space:nowrap;
-}
-
-.recipe-block-container {
-  width: 320px;
-  display: inline-block;  
-  background: #FFFACD;
-  margin-left: 12px;
-  box-shadow: 3px 3px 3px #F0E68C;
-}
-
-.recipe-block {
-  width: 300px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.no-recipe {
-  background: #AAA;
-}
-
-div.recipe-block-img-container {
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-}
-
-img.recipe-block-image {
-  max-height: 200px;
-  width: auto !important;
-  position: absolute;
-  transform: translate(-50%,0);
-  margin-left: 50%;
-}
-
-
 .recipe-title-container {
   height: 40px;
-}
-
-h4.recipe-block-title {
-  white-space: pre-wrap;
-  width: 100%;
-  position: relative;
-  text-align: center;
 }
 
 img.recipe-head-block-image {

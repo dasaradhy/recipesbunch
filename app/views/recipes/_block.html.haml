@@ -6,6 +6,14 @@
       .recipe-block-img-container
         - recipe_image = recipe.try(:images).try(:first) || 'placeholder.png'
         %img{src: recipe_image,alt: recipe.name,class: 'recipe-block-image'} 
+      .recipe-block-bottom
+        .recipe-block-ratings
+          = simple_form_for recipe do |f|
+            = f.input :taste, as: :stars, read_only: true
+            = f.input :ease_of_preparation, label: 'Easy', as: :stars, read_only: true
+        .recipe-block-description
+          %h5= "#{recipe.description}"
+          .recipe-description-overflow-shadow
   - else
     .recipe-block.no-recipe
       &nbsp;

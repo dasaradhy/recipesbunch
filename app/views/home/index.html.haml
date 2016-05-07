@@ -9,9 +9,12 @@
 
 #search_results
 
-%h4.recipes-bar= 'Recent Recipes'
+.heading-bar
+  %h4.recipes-bar= 'Recent Recipes'
 = render partial: 'recipes/list', locals: {recipes: @recent_recipes}
-%h4.recipes-bar= 'Tastiest Recipes'
+.heading-bar
+  %h4.recipes-bar= 'Tastiest Recipes'
 = render partial: 'recipes/list', locals: {recipes: @tastiest_recipes}
-%h4.recipes-bar= 'Easiest Recipes'
+.heading-bar
+  %h4.recipes-bar= 'Easiest Recipes'
 = render partial: 'recipes/list', locals: {recipes: @easiest_recipes}
