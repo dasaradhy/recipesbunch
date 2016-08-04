@@ -7,12 +7,13 @@
 #  ingredients         :json             default([])
 #  steps               :json             default([])
 #  preparation_time    :string
-#  ease_of_preparation :float
-#  taste               :float
+#  ease_of_preparation :float            default(0.0)
+#  taste               :float            default(0.0)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  name                :string
 #  images              :json             default([])
+#  description         :text
 #
 
 class Recipe < ActiveRecord::Base
@@ -22,6 +23,8 @@ class Recipe < ActiveRecord::Base
   validate :preparation_time_is_valid
   validate :ingredients_are_present
   validate :steps_are_present
+
+  has_many :ratings, dependent: :destroy
 
 
   private

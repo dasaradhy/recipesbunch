@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
 
+  get 'ratings/index'
+
+  get 'ratings/show'
+
+  get 'ratings/edit'
+
+  get 'ratings/create'
+
+  get 'ratings/update'
+
   post 'images' => 'images#create'
   get 'images/:id' => 'images#show'
   get 'images' => 'images#get_image'
 
-  resources :recipes
+  resources :recipes do
+    resources :ratings
+  end
 
   devise_for :users
   get 'home/index'

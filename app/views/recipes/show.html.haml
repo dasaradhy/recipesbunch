@@ -36,3 +36,10 @@
 
 - if user_signed_in? && current_user.chef.present? && current_user.chef.id == @recipe.chef_id
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_recipe_path(@recipe), :class => 'btn btn-default'
+
+%hr
+%h3= 'Comments'
+- if @recipe.ratings.blank? && !current_user
+  = "No reviews yet. Be the first one to review this recipe."
+- else
+  = render partial: 'ratings/list'

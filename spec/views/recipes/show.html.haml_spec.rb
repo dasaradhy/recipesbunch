@@ -15,4 +15,11 @@ RSpec.describe "recipes/show.html.haml", type: :view do
     expect(rendered).to have_selector('.step',count:2)
   end
 
+  context 'without any comments' do
+    it 'shows no comments' do
+      render
+      expect(rendered).to match /No reviews yet. Be the first one to review this recipe/
+    end
+  end
+
 end
